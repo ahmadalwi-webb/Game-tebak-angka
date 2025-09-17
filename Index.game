@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Tebak Angka</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      text-align: center;
+      padding: 30px;
+    }
+    .game-box {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      width: 320px;
+      margin: auto;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    }
+    input {
+      padding: 10px;
+      width: 120px;
+      text-align: center;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    #pesan {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-box">
+    <h2>🎮 Game Tebak Angka</h2>
+
+    <!-- tahap 1: masukkan angka rahasia -->
+    <div id="setAngka">
+      <p>Masukkan angka rahasia (1–50):</p>
+      <input type="number" id="angkaRahasia" min="1" max="50">
+      <br>
+      <button onclick="simpanAngka()">Simpan Angka</button>
+    </div>
+
+    <!-- tahap 2: pemain menebak -->
+    <div id="mainGame" style="display:none;">
+      <p>Tebak angka antara 1–50:</p>
+      <input type="number" id="tebakan" min="1" max="50">
+      <br>
+      <button onclick="tebak()">Tebak</button>
+      <p id="pesan"></p>
+    </div>
+  </div>
+
+  <script>
+    let angkaBenar = null;
+
+    function simpanAngka() {
+      let input = document.getElementById(28).value;
+      if (input) {
+        angkaBenar = parseInt(input);
+        document.getElementById("setAngka").style.display = "none";
+        document.getElementById("mainGame").style.display = "block";
+        alert("Angka rahasia sudah disimpan. Sekarang pemain lain bisa menebak!");
+      } else {
+        alert("Masukkan angka dulu!");
+      }
+    }
+
+    function tebak() {
+      let input = document.getElementById("tebakan").value;
+      let pesan = document.getElementById("pesan");
+
+      if (input == angkaBenar) {
+        pesan.innerHTML = "🎉 Selamat! Tebakan benar.";
+        pesan.style.color = "green";
+      } else if (input > angkaBenar) {
+        pesan.innerHTML = "Terlalu besar! Coba lagi.";
+        pesan.style.color = "red";
+      } else if (input < angkaBenar) {
+        pesan.innerHTML = "Terlalu kecil! Coba lagi.";
+        pesan.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
