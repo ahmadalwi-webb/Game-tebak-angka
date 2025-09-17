@@ -53,7 +53,7 @@
       <p>Masukkan angka rahasia (1–50):</p>
       <input type="number" id="angkaRahasia" min="1" max="50">
       <br>
-      <button onclick="simpanAngka()">Simpan Angka</button>
+      <button onclick="simpanAngka(28)">Simpan Angka</button>
     </div>
 
     <!-- tahap 2: pemain menebak -->
